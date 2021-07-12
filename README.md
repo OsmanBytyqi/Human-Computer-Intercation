@@ -5,7 +5,7 @@
 [![Crates.io](https://img.shields.io/crates/l/License?logo=github&color=)](https://github.com/OsmanBytyqi/Human-Computer-Intercation/blob/master/LICENSE)
 ![GitHub last commit](https://img.shields.io/github/last-commit/OsmanBytyqi/Human-Computer-Intercation?color=blue&logo=github)
 ----
-## Krijimi i nje `Graphical User Interface (GUI)` ne kuader te lendes Komunikimi-Njeri-Kompjuter
+### Krijimi i nje `Graphical User Interface (GUI)` ne kuader te lendes Komunikimi-Njeri-Kompjuter
 <br>
 <p align="center">
   <img src="screen.png" style="width:410px">
