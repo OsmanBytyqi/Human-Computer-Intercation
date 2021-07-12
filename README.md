@@ -19,9 +19,8 @@
 
 ## Table of Contents
 
-
-- [Technologies](#Technologies)
 - [Features](#Features)
+- [Technologies](#Technologies)
 - [License & CopyRight](#License-&-CopyRight)
 ---
 
