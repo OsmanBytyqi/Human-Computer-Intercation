@@ -8,7 +8,7 @@
 ### Krijimi i nje `Graphical User Interface (GUI)` ne kuader te lendes Komunikimi-Njeri-Kompjuter
 <br>
 <p align="center">
-  <img src="screen.png" style="width:410px">
+  <img src="screen.png" style="width:380px">
 </p>
 <figcaption align = "center"><b>Pamje nga GUI</b></figcaption>
 
