@@ -47,7 +47,7 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstset{%frame=tbrl,
-  backgroundcolor=\color{backcolour},
+  %backgroundcolor=\color{backcolour},
   language=java,
   aboveskip=3mm,
   belowskip=3mm,
@@ -79,8 +79,6 @@ Fakulteti i Inxhinierise Elektrike dhe Kompjuterike}}
 \begin{center}
 \vspace{-0.9cm}
 \includegraphics[scale=0.16]{../up.png} 
-
-
 \end{center}
 \vspace{0.2cm}
 \begin{center}
@@ -102,7 +100,7 @@ Fakulteti i Inxhinierise Elektrike dhe Kompjuterike}}
 
 \vspace{-0.3cm}
 \begin{flushleft}
-\author{\textsc{Osman Bytyqi\hspace{7.7cm}MSc.Gentian Strana\\Valdrin Ejupi\\Medina Hajredini\\Laura Beqiri\\Mihrie Ibrahimi}}
+\author{\textsc{Osman Bytyqi\hspace{7.7cm}MSc.Gentian Strana\\Valdrin Ejupi\\Medine Hajredini\\Laura Gashi\\Mihrie Ibrahimi}}
 \end{flushleft}}
 \end{flushleft}
 \end{center}
@@ -112,20 +110,438 @@ Fakulteti i Inxhinierise Elektrike dhe Kompjuterike}}
 
 \vspace*{1.7cm}
 
-\textsc{\date{Maj, 2021}}
+\textsc{\date{Qeshor, 2021}}
 \end{center}
 \thispagestyle{empty}
 \newgeometry{margin=1.5in}
 
 \newpage 
 \begin{abstract}
-Ky projekt ka te beje me zhvillimin e nje aplikacioni qe perodret menaxhimin  e bursave te studeteve i zhvilluar ne gjuhen $JAVA$ dhe i zhvilluar si $GUI$ apo ne boten e teknoligjise njihet si graphical user interface
-
-
+Ky projekt ka te beje me zhvillimin e nje aplikacioni qe perdoret menaxhimin  e bursave te studeteve i zhvilluar ne gjuhen $JAVA$ dhe i zhvilluar si $GUI$ apo qe  njihet si graphical user interface, duke i perdorur librarite nga $JAVA$ qe jane $JAVAFX$ kemi arritur ta krijojm nje Desktop app i cili sherben per menaxhimin e bursave te studeteve i cili ne vete  permban disa karakteristaika qe e veqojn kete app siq jane:i leht ne perdorim i shpejt dhe mjaft efikas dhe fale gjuhes java ky applikacion mund te ekzkutohet ne qdo sistem operative qoft Windows Linux apo edhe Mac OS.Si fillim perdorusi duhet te kyqet ne applikacion dhe do te shfaqet dritaria me menut krysore si gjuha e ne te cilen eshte i lire ta zgjedhe ne gjuhen Shqipe apo ne gjuhen Angleze dhe me pas mund te vazhdoj me listen e aplikueseve, fituesit e bursave  qoft ajo komunale apo edhe  e Ministrise se Shkences dhe Teknologjise.
 
 
 \end{abstract}
 
 \newpage
+\tableofcontents
+\newpage
+\section{Hyrje}
+Java eshte njera prej gjuheve programuese me te perdorura dhe me te fuqishme vitet e fundit. Java eshte një gjuhe programimi e orientuar nga objektet, e bazuar në klasa, e ideuar specifikisht per te pasur sa me pak varesi implementimi. Java tenton te lejoje zhvilluesit e aplikacioneve të shkruaje nje here dhe te ekzekutoje kudo, pra i njëjti kod ekzekutohet njelloj ne te gjitha platformat, pa pasur nevoje te nje kompilimi te dyte.
+\subsubsection{Veglat e perdorura}
+\begin{itemize}
+\item JAVA
+\item Intellij IDEA
+\item Linux 
+\item Librarite javafx
+\item MySQL
+\end{itemize}
+\subsubsection{Objektivat}
+\begin{enumerate}
+\item Nje dritare kryesore me menu
+\begin{itemize}
+\item Nje numer te caktuar te toolbaoxa-ve;
+\item Nje shirit i statusit;
+\item Nje shortcut menu;
+\end{itemize}
+\item Nje dritare tjeter me:
+\begin{itemize}
+\item Nje numer te Labelave;
+\item Nje numer te tekst kontrollave;
+\item  Nje numer te butonave :Radio, CheckBoxa-ve,GroupBox-ave
+\end{itemize}
+\item Nje dritare tjeter  me:
+\begin{itemize}
+\item Nje Data Access objekt per lidhjen me Bazen e te dhenave;
+\item Nje DataGridView;
+\end{itemize}
+\item Si objektive eshte qe te realizohet ky projekt me mundësi alternative te qasjes me
+renditje të caktuar të Tab-ve;
+\item  Butonat dhe menyte me mundesi alternative të qasjes edhe permes tastieres jo
+vetem me miun;
+\item  Mundesia e ndryshimit të permbajtjes sipas dy gjuheve (Shqip dhe Anglisht).
+\item Integrimin e ndihmes ne Aplikacion për dy gjuhesi.
+\end{enumerate}
+\newpage
+\section{Login Forma}
+\subsection{Pamja}
+\begin{center}
+\includegraphics[scale=0.3]{../../Pictures/appi.png} 
+\end{center}
+\subsubsection{Inplementimi ne Kode}
+\begin{lstlisting}
+Label lblGjuha = new Label("Gjuha:");
+		TilePane r = new TilePane(); 
+        ToggleGroup tg = new ToggleGroup(); 
+		btnShqip = new RadioButton("Shqip");
+		btnAnglisht = new RadioButton("Anglisht");
+		
+	    lblGjuha.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 13)); 
+	    btnShqip.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 10)); 
+	    btnAnglisht.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 10)); 
 
+
+		btnShqip.setToggleGroup(tg);
+		btnAnglisht.setToggleGroup(tg);
+		r.getChildren().add(lblGjuha);
+		r.getChildren().add(btnAnglisht);
+		r.getChildren().add(btnShqip);
+
+		
+		btnAnglisht.setOnAction(e->{
+			lblUsername.setText("Username:");
+			lblPassword.setText("Password:");
+			btnLogin.setText("Login");
+			lblHyrja.setText("\n\n\t\t\tWelcome to SMS!");
+
+		});
+		btnShqip.setOnAction(e->{
+			lblUsername.setText("Emri:");
+			lblPassword.setText("Fjalekalimi:");
+			btnLogin.setText("Hyrja");
+			lblHyrja.setText("\n\n\t\t\tMiresevini ne SMB!");
+\end{lstlisting}
+\newpage
+\section{Lista e Aplikanteve}
+\begin{center}
+\includegraphics[scale=0.3]{../../Pictures/Screenshot from 2021-07-13 13-44-00.png} 
+\end{center}
+\subsubsection{Inplementimi ne Kode}
+\begin{lstlisting}
+public class Applicants {
+	
+	private int id;
+	private int idStudentit;
+	private String emri;
+	private String mbiemri;
+//	private int ditelindja;
+	private String mesatarja;
+	private String email;
+	private int numri;
+	private String qyteti;
+	private String adresa;
+	private int VitiiStudimeve;
+	private String NiveliiStudimeve;
+	private String fakulteti;
+	private String drejtimi;
+	private String bursa;
+	
+	public Applicants(int id1, int idStudentit1, String emri1, String mbiemri1,
+//			int ditelindja, 
+			String mesatarja1, String email1,int numri1, String qyteti1, String adresa1, int VitiiStudimeve1, 
+			String NiveliiStudimeve1, String fakulteti1, String drejtimi1, String bursa1)
+	{
+		this.id = id1;
+		this.idStudentit = idStudentit1;
+		this.emri= emri1;
+		this.mbiemri = mbiemri1;
+//		this.ditelindja = ditelindja;
+		this.mesatarja =mesatarja1;
+		this.email = email1;
+		this.numri = numri1;
+		this.qyteti = qyteti1;
+		this.adresa = adresa1;
+		this.VitiiStudimeve = VitiiStudimeve1;
+		this.NiveliiStudimeve = NiveliiStudimeve1;
+		this.fakulteti = fakulteti1;
+		this.drejtimi = drejtimi1;
+		this.bursa = bursa1;
+		
+		
+	}
+	
+
+
+
+
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+		
+	}
+	
+	public int getIdStudentit() {
+		return idStudentit;
+	}
+	
+	public void setIdStudentit(int idStudentit) {
+		 this.idStudentit = idStudentit;
+		
+	}
+	
+	public String getEmri() {
+		return emri;
+	}
+	
+	public void setEmri(String emri) {
+		this.emri = emri;
+		
+	}
+	public String getMbiemri() {
+		return mbiemri;
+	}
+	
+	public void setMbiemri(String mbiemri) {
+		this.mbiemri = mbiemri;
+		
+	}
+//	public int getDitelindja() {
+//		return ditelindja;
+//	}
+//	
+//	public void setDitelindja(int ditelindja) {
+//		this.ditelindja = ditelindja;
+//		
+//	}
+	public String getMesatarja() {
+		return mesatarja;
+	}
+	
+	public void setMesatarja(String mesatarja) {
+		this.mesatarja = mesatarja;
+		
+	}
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+		
+	}
+	public int getNumri() {
+		return numri;
+	}
+	
+	public void setNumri(int numri) {
+		this.numri = numri;
+		
+	}
+	public String getQyteti() {
+		return qyteti;
+	}
+	
+	public void setSqyteti(String qyteti) {
+		 this.qyteti = qyteti;
+		
+	}
+	public String getAdresa() {
+		return adresa;
+	}
+	
+	public void setAdresa(String adresa) {
+		 this.adresa = adresa;
+		
+	}
+	public int getVitiiStudimeve() {
+		return VitiiStudimeve;
+	}
+	
+	public void setVitiiStudimeve(int VitiiStudimeve) {
+		 this.VitiiStudimeve = VitiiStudimeve;
+		
+	}
+
+	
+	public void getNiveliiStudimeve(String NiveliiStudimeve) {
+		 this.NiveliiStudimeve = NiveliiStudimeve;
+		
+	}
+	public String getfakulteti() {
+		return fakulteti;
+	}
+	
+	public void setFakulteti(String fakulteti) {
+		 this.fakulteti = fakulteti;
+		
+	}
+	public String getdrejtimi() {
+		return drejtimi;
+	}
+	
+	public void setDrejtimi(String drejtimi) {
+		 this.drejtimi = drejtimi;
+		
+	}
+	public String getBursa() {
+		return bursa;
+	}
+	
+	public void setBursa(String bursa) {
+		 this.bursa = bursa;
+		
+	}
+	
+	public static boolean addApplicants(int id, int idStudentit, String emri, String mbiemri,
+//			int ditelindja, 
+			String mesatarja, String email, int numri, String qyteti, String adresa, int VitiiStudimeve, 
+			String NiveliiStudimeve, String fakulteti, String drejtimi, String bursa) {
+		String query = "INSERT INTO aplikuesit(id, idStudentit, emri, mbiemri, "
+//				+ "ditelindja, "
+				+ "mesatarja, email, numri, qyteti, adresa, VitiiStudimeve, NiveliiStudimeve, fakulteti, drejtimi, bursa) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			PreparedStatement pst = DBConnection.getConnection().prepareStatement(query);
+			
+			pst.setInt(1, id);
+			pst.setInt(2, idStudentit);
+			pst.setString(3, emri);
+			pst.setString(4, mbiemri);
+//			pst.setInt(5, ditelindja);
+			pst.setString(5, mesatarja);
+			pst.setString(6, email);
+			pst.setInt(7,numri);
+			pst.setString(8, qyteti);
+			pst.setString(9, adresa);
+			pst.setInt(10, VitiiStudimeve);
+			pst.setString(11, NiveliiStudimeve);
+			pst.setString(12, fakulteti);
+			pst.setString(13, drejtimi);
+			pst.setString(14, bursa);
+			
+			return (pst.executeUpdate() > 0);
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+			return false;	
+		}
+	}
+	
+	
+	public static boolean updateApplicants(int id, int idStudentit, String emri, String mbiemri,
+//			int ditelindja, 
+			String mesatarja, String email, int numri, String qyteti, String adresa, int VitiiStudimeve, 
+			String NiveliiStudimeve, String fakulteti, String drejtimi, String bursa) {
+		String query = "Update aplikuesit SET id=?, idStudentit=?, emri=?, mbiemri=?, "
+//				+ "ditelindja=?,
+				+"mesatarja=?, email=?, numri=?, "
+				+ "qyteti=?, adresa=?, VitiiStudimeve=?, NiveliiStudimeve=?, fakulteti=?, drejtimi=?, bursa=?";
+		try {
+			PreparedStatement pst = DBConnection.getConnection().prepareStatement(query);
+			pst.setInt(1, id );
+			pst.setInt(2, idStudentit);
+			pst.setString(3, emri);
+			pst.setString(4, mbiemri);
+//			pst.setInt(5, ditelindja);
+			pst.setString(5, mesatarja);
+			pst.setString(6, email);
+			pst.setInt(7, numri);
+			pst.setString(8, qyteti);
+			pst.setString(9, adresa);
+			pst.setInt(10, VitiiStudimeve);
+			pst.setString(11, NiveliiStudimeve);
+			pst.setString(12, fakulteti);
+			pst.setString(13, drejtimi);
+			pst.setString(14, bursa);
+			return (pst.executeUpdate() > 0);
+		}
+		catch(SQLException ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean deleteApplicants(int id) {
+		String query = "Delete from aplikuesit where id=?";
+		try {
+			PreparedStatement pst = DBConnection.getConnection().prepareStatement(query);
+			pst.setInt(1, id);
+			return(pst.executeUpdate()>0);
+		}
+		catch(SQLException ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	
+	
+	public static List<Applicants> getApplicants(){
+		List<Applicants> applicantsList = new ArrayList();
+	
+		String query = "Select * from aplikuesit";
+		try {
+		PreparedStatement pst = DBConnection.getConnection().prepareStatement(query);
+		ResultSet rst = pst.executeQuery();
+		
+		while(rst.next()) {
+			Applicants applicants = new Applicants(rst.getInt(1), rst.getInt(2), rst.getString(3), rst.getString(4), rst.getString(6), rst.getString(7), rst.getInt(8), 
+					rst.getString(9), rst.getString(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getString(14), rst.getString(15));
+			
+			applicantsList.add(applicants);
+		}
+		}
+		catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+
+		return applicantsList;
+	}
+	
+	
+}
+
+\end{lstlisting}
+\newpage
+\section{Lidhja me Data Baze}
+Ketu e kemi paraqitur lidhjen e applikacionit me Data Baze:
+\begin{lstlisting}
+public class SQLConnection {
+	
+	
+	public static Connection DbConnector() {
+		try {
+			Connection conn= null;
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/menaxhimi_bursave
+			?autoReconnect=true&useSSL=false","root","");
+			return conn;
+
+			
+		}
+		catch (Exception ex) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Database problem");
+			alert.setHeaderText(null);
+			alert.setContentText("Can not connect to database");
+			alert.showAndWait();
+			System.exit(0);
+	}
+		return DbConnector();
+		
+	
+	}
+}
+
+\end{lstlisting}
+\newpage
+\subsubsection{ER-Diagramet}
+ER Diagrami eshte paraqitje vizuele e bazes se te dhenave. Nje model baze ER eshte i perbere nga lloje
+entiteti (te cilat klasifikojne gjerat me interes) dhe specifikon marredheniet qe mund te ekzistojne midis
+entiteteve (instancat e atyre llojeve të entiteteve).
+\vspace*{1cm}
+\begin{center}
+\includegraphics[scale=0.5]{../ERDIAGRAMI1.png}  
+\end{center}
+\subsubsection{Lidhjet e tabelave}
+\begin{enumerate}
+\item  Tabela login eshte i lidhur 1 me 1 me tabelen aplikuesit
+\item Tables selected eshte i lidhur 1 me shume me tabelen aplikuesit
+\end{enumerate}
+Pra nga pamja e me lart Data Baza jone eshte perbere prej 3 tabelave  qe jane:login, selected dhe aplikuesit.
+ \newpage
+\section{Perfundimi}
+Duke i pare kerkesat e projektit dhe ekzekutimin e applikacionit,kerkesat(objektivat) te cilat jane cekur me lart jane permbushur me suksese pra ashtu siq jane kerkuar.Realizimi i ketij projekti(applikacioni) na ka mundesuar te pervetsojme JavaFx duke e krijuar nje sistem interaktive si GUI.\\
+\vspace*{4cm}
+\section{Referencat}
+
+\begin{enumerate}
+\item \url{https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html}
+\item \url{https://dev.mysql.com/doc/}
+\item \url{https://stackoverflow.com/}
+\item \url{https://drive.google.com/drive/folders/1hTSTP3Zj11ZU1ImTpKDch51ixnrXI2lh}
+\item \url{https://github.com/}
+\end{enumerate}
 \end{document}
